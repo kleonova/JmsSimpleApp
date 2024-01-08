@@ -16,7 +16,6 @@ public class MqCommunicationController {
 
     @GetMapping("save")
     public void saveStringInMq(@RequestBody String stringToSaveInMq) {
-        System.out.println(stringToSaveInMq);
         mqCommunication.sendMessageToMQ(stringToSaveInMq);
     }
 

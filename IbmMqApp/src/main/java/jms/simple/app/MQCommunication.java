@@ -4,7 +4,6 @@ import jakarta.jms.JMSException;
 import jakarta.jms.TextMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.jms.JmsException;
@@ -21,7 +20,6 @@ public class MQCommunication {
 
     @Value("${ibm.mq.receivingQueueName:DEV.QUEUE.2}")
     String nameOfReceivingQueue;
-
 
     private final ApplicationContext applicationContext;
 
