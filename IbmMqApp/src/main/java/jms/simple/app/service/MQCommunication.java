@@ -1,4 +1,4 @@
-package jms.simple.app;
+package jms.simple.app.service;
 
 import jakarta.jms.JMSException;
 import jakarta.jms.TextMessage;

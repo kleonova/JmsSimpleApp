@@ -1,6 +1,7 @@
-package jms.simple.app;
+package jms.simple.app.controller;
 
 import jakarta.jms.JMSException;
+import jms.simple.app.service.MQCommunication;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
