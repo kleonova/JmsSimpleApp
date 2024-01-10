@@ -2,11 +2,13 @@ package jms.simple.app.service;
 
 import com.ibm.mq.jakarta.jms.MQQueue;
 import jakarta.jms.JMSException;
+import jakarta.jms.Message;
 import jakarta.jms.TextMessage;
 import jms.simple.app.model.MessageModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 import org.springframework.jms.core.JmsTemplate;
 
@@ -53,6 +55,17 @@ public class MessageService {
         return message;
     }
 
+    @JmsListener(destination = "DEV.QUEUE.1")
+    public void receiveMessage(Message message) {
+        try {
+            TextMessage textMessage = (TextMessage) message;
+            final String textMessageBody = textMessage.getText();
+
+            log.info("Receive message {} with correlationId {}", textMessageBody, textMessage.getJMSCorrelationID());
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
+    }
 
     // You could use Apache Commons Codec library instead
     private static final byte[] HEX_ARRAY = "0123456789ABCDEF".getBytes();
